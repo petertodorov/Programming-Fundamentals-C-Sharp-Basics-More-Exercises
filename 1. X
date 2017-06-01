@@ -1,0 +1,39 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class x
+{
+    static void Main(string[] args)
+    {
+        int n = int.Parse(Console.ReadLine());
+        int middle = (n - 1) / 2;
+        for (int row = 0; row < (n - 1) / 2; row++)
+        {
+            int temp = (n - 2) - (row * 2);
+            Console.Write(new string(' ', row));
+            Console.Write("x");
+            Console.Write(new string(' ', temp));
+            Console.WriteLine("x");
+        }
+
+        PrintMiddleLine(middle);
+
+        for (int row = (n - 1) / 2; row > 0; row--)
+        {
+            int temp = (n - (row * 2));
+            Console.Write(new string(' ', row - 1));
+            Console.Write("x");
+            Console.Write(new string(' ', temp));
+            Console.WriteLine("x");
+        }
+    }
+    private static void PrintMiddleLine(int middle)
+    {
+        Console.Write(new string(' ', middle));
+        Console.Write("x");
+        Console.WriteLine(new string(' ', middle));
+    }
+}
