@@ -1,0 +1,114 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class VaporStore
+{
+    static void Main(string[] args)
+    {
+        double balance = double.Parse(Console.ReadLine());
+        double total = balance;
+        string game = Console.ReadLine();
+        double gamePrice = 0;
+        string gameName = "";
+        while (game != "Game Time")
+        {
+            switch (game)
+            {
+                case "OutFall 4":
+                    gameName = game;
+                    gamePrice = 39.99;
+                    if (balance >= gamePrice)
+                    {
+                        balance -= gamePrice;
+                        Console.WriteLine($"Bought {game}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Too Expensive");
+                    }
+                    break;
+                case "CS: OG":
+                    gamePrice = 15.99;
+                    gameName = game;
+                    if (balance >= gamePrice)
+                    {
+                        balance -= gamePrice;
+                        Console.WriteLine($"Bought {game}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Too Expensive");
+                    }
+                    break;
+                case "Zplinter Zell":
+                    gamePrice = 19.99;
+                    gameName = game;
+                    if (balance >= gamePrice)
+                    {
+                        balance -= gamePrice;
+                        Console.WriteLine($"Bought {game}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Too Expensive");
+                    }
+                    break;
+                case "Honored 2":
+                    gamePrice = 59.99;
+                    gameName = game;
+                    if (balance >= gamePrice)
+                    {
+                        balance -= gamePrice;
+                        Console.WriteLine($"Bought {game}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Too Expensive");
+                    }
+                    break;
+                case "RoverWatch":
+                    gamePrice = 29.99;
+                    gameName = game;
+                    if (balance >= gamePrice)
+                    {
+                        balance -= gamePrice;
+                        Console.WriteLine($"Bought {game}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Too Expensive");
+                    }
+                    break;
+                case "RoverWatch Origins Edition":
+                    gamePrice = 39.99;
+                    gameName = game;
+                    if (balance >= gamePrice)
+                    {
+                        balance -= gamePrice;
+                        Console.WriteLine($"Bought {game}");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Too Expensive");
+                    }
+                    break;
+                default:
+                    Console.WriteLine("Not Found");
+                    break;
+            }
+         
+            if (balance <=0)
+            {
+                Console.WriteLine("Out of money!");
+                return;
+            }
+            game = Console.ReadLine();
+
+        }
+        double remaining = total - balance;
+        Console.WriteLine($"Total spent: ${remaining:F2}. Remaining: ${balance:F2}");
+    }
+}
