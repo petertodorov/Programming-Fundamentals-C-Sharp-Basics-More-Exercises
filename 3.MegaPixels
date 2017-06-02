@@ -1,0 +1,18 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class MegaPixels
+{
+    static void Main(string[] args)
+    {
+        int wide= int.Parse(Console.ReadLine());
+        int high = int.Parse(Console.ReadLine());
+
+        double pixels = (wide * high) ;
+        pixels = Math.Round(pixels / 1000000D, 1);
+        Console.WriteLine($"{wide}x{high} => {pixels}MP");
+    }
+}
