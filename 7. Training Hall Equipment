@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class TrainingHallEquipment
+{
+    static void Main(string[] args)
+    {
+        int budget = int.Parse(Console.ReadLine());
+        int numberOfItems = int.Parse(Console.ReadLine());
+        double subTotal = 0;
+        List<string> itemName = new List<string>();
+        List<double> itemPrice = new List<double>();
+        List<int> itemCount = new List<int>();
+
+        for (int item = 0; item < numberOfItems; item++)
+        {
+            itemName.Add(Console.ReadLine());
+            itemPrice.Add(double.Parse(Console.ReadLine()));
+            itemCount.Add(int.Parse(Console.ReadLine()));
+
+
+        }
+        for (int i = 0; i < numberOfItems; i++)
+        {
+            if (itemCount[i] > 1)
+            {
+                Console.WriteLine($"Adding {itemCount[i]} {itemName[i]}s to cart.");
+            }
+            else
+            {
+                Console.WriteLine($"Adding {itemCount[i]} {itemName[i]} to cart.");
+
+            }
+            double totalPriceItems = itemPrice[i] * itemCount[i];
+            subTotal += totalPriceItems;
+        }
+        Console.WriteLine($"Subtotal: ${subTotal:F2}");
+        if (subTotal <= budget)
+        {
+            double moneyLeft = budget - subTotal;
+            Console.WriteLine($"Money left: ${moneyLeft:F2}");
+        }
+        else
+        {
+            double moneyNeeded = Math.Abs(budget - subTotal);
+            Console.WriteLine($"Not enough. We need ${moneyNeeded:F2} more.");
+        }
+    }
+}
