@@ -1,0 +1,85 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class photoGallery
+{
+    static void Main(string[] args)
+    {
+        int number = int.Parse(Console.ReadLine());
+        int day = int.Parse(Console.ReadLine());
+        int month = int.Parse(Console.ReadLine());
+        int year = int.Parse(Console.ReadLine());
+        int hours = int.Parse(Console.ReadLine());
+        int minutes = int.Parse(Console.ReadLine());
+        int size = int.Parse(Console.ReadLine());
+        int width = int.Parse(Console.ReadLine());
+        int height = int.Parse(Console.ReadLine());
+        double tempSize = 0;
+
+        Console.WriteLine($"Name: DSC_{number:D4}.jpg");
+        DateTime tempdate = new DateTime(year,month,day);
+        string date = tempdate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+        Console.Write($"Date Taken: {date} ");
+        WriteHour(hours, minutes);
+        WriteSize(size, tempSize);
+        WriteResolution(width, height);
+    }
+
+    private static void WriteResolution(int width, int height)
+    {
+        if (width>height)
+        {
+            Console.WriteLine($"Resolution: {width}x{height} (landscape)");
+        }
+        else if (width== height)
+        {
+            Console.WriteLine($"Resolution: {width}x{height} (square)");
+        }
+        else if (height>width)
+        {
+            Console.WriteLine($"Resolution: {width}x{height} (portrait)");
+        }
+    }
+
+    private static void WriteSize(int size, double tempSize)
+    {
+        if (size < 1000)
+        {
+            Console.WriteLine($"Size: {size}B");
+        }
+        else if (size >= 1000 && size < 999999)
+        {
+            tempSize = Convert.ToDouble(size) / 1000D;
+            Console.WriteLine($"Size: {tempSize}KB");
+        }
+        else if (size >= 1000000)
+        {
+            tempSize = Convert.ToDouble(size) / 1000000D;
+            Console.WriteLine($"Size: {tempSize}MB");
+        }
+    }
+
+    private static void WriteHour(int hours, int minutes)
+    {
+        string hr = "";
+        string min = Convert.ToString(minutes % 100);
+
+        if (hours < 10)
+        {
+            hr = "0" + Convert.ToString(hours);
+        }
+        else if (hours >= 10)
+        {
+            hr = Convert.ToString(hours);
+        }
+        if (min.Length == 1)
+        {
+            min = "0" + min;
+        }
+        Console.WriteLine($"{hr}:{min}");
+    }
+}
