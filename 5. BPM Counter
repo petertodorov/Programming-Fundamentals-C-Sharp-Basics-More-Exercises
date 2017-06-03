@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class BPMCounter
+{
+    static void Main(string[] args)
+    {
+        int bpm = int.Parse(Console.ReadLine());
+        int numberBeats = int.Parse(Console.ReadLine());
+        double oneBeatSecDuration = 60.0 / bpm;
+        double seconds = Math.Floor(numberBeats * oneBeatSecDuration);
+        double bars = Math.Round(numberBeats / 4.0,1);
+        int minutes = (int)seconds / 60;
+        seconds -= minutes * 60;
+        Console.WriteLine($"{bars} bars - {minutes}m {seconds}s");
+    }
+}
