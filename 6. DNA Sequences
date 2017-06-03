@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class DNASequences
+{
+    static void Main(string[] args)
+    {
+        int machSum = int.Parse(Console.ReadLine());
+        Dictionary<int, char> nucleotids = new Dictionary<int, char>();
+        nucleotids.Add(1, 'A');
+        nucleotids.Add(2, 'C');
+        nucleotids.Add(3, 'G');
+        nucleotids.Add(4, 'T');
+        int counter = 0;
+
+        for (int first = 1; first <=4; first++)
+        {
+            for (int second = 1; second <=4; second++)
+            {
+                for (int third = 1; third <=4; third++)
+                {
+                    int sum = first+second+third;
+                    if (sum>=machSum)
+                    {
+                        Console.Write($"O{nucleotids[first]}{nucleotids[second]}{nucleotids[third]}O ");
+                        counter++;
+                        if (counter == 4)
+                        {
+                            Console.WriteLine();
+                            counter = 0;
+                        }
+                    }
+                    else 
+                    {
+                        Console.Write($"X{nucleotids[first]}{nucleotids[second]}{nucleotids[third]}X ");
+                        counter++;
+                        if (counter == 4)
+                        {
+                            Console.WriteLine();
+                            counter = 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
