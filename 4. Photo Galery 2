@@ -1,0 +1,64 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class PhotoGallery
+{
+    static void Main(string[] args)
+    {
+        int number = int.Parse(Console.ReadLine());
+        int day = int.Parse(Console.ReadLine());
+        int month = int.Parse(Console.ReadLine());
+        int year = int.Parse(Console.ReadLine());
+        int hours = int.Parse(Console.ReadLine());
+        int minutes = int.Parse(Console.ReadLine());
+        int size = int.Parse(Console.ReadLine());
+        int width = int.Parse(Console.ReadLine());
+        int height = int.Parse(Console.ReadLine());
+        double tempSize = 0;
+
+        Console.WriteLine($"Name: DSC_{number:D4}.jpg");
+        DateTime tempdate = new DateTime(year, month, day, hours, minutes, 0);
+        string date = tempdate.ToString("dd/MM/yyyy HH:mm" , CultureInfo.InvariantCulture);
+        Console.WriteLine($"Date Taken: {date} ");
+        WriteSize(size, tempSize);
+        WriteResolution(width, height);
+    }
+
+    private static void WriteResolution(int width, int height)
+    {
+        if (width>height)
+        {
+            Console.WriteLine($"Resolution: {width}x{height} (landscape)");
+        }
+        else if (width== height)
+        {
+            Console.WriteLine($"Resolution: {width}x{height} (square)");
+        }
+        else if (height>width)
+        {
+            Console.WriteLine($"Resolution: {width}x{height} (portrait)");
+        }
+    }
+
+    private static void WriteSize(int size, double tempSize)
+    {
+        if (size < 1000)
+        {
+            Console.WriteLine($"Size: {size}B");
+        }
+        else if (size >= 1000 && size < 999999)
+        {
+            tempSize = Convert.ToDouble(size) / 1000D;
+            Console.WriteLine($"Size: {tempSize}KB");
+        }
+        else if (size >= 1000000)
+        {
+            tempSize = Convert.ToDouble(size) / 1000000D;
+            Console.WriteLine($"Size: {tempSize}MB");
+        }
+    }
+}
