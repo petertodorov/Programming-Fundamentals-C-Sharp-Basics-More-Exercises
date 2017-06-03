@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+class TrainingHallEquipment
+{
+    static void Main(string[] args)
+    {
+        double budget = double.Parse(Console.ReadLine());
+        int numberOfItems = int.Parse(Console.ReadLine());
+        double subTotal = 0.0;
+        for (int item = 1; item <=numberOfItems; item++)
+        {
+          string  itemName = Console.ReadLine();
+          double itemPrice= double.Parse(Console.ReadLine());
+          int  itemCount=int.Parse(Console.ReadLine());
+        
+           if (itemCount > 1)
+            {
+                Console.WriteLine($"Adding {itemCount} {itemName}s to cart.");
+            }
+            else
+            {
+                Console.WriteLine($"Adding {itemCount} {itemName} to cart.");
+            }
+            double  totalPriceItems = itemPrice * itemCount;
+            subTotal += totalPriceItems;
+            budget -= totalPriceItems;
+        }
+
+        Console.WriteLine($"Subtotal: ${subTotal:F2}");
+
+        if ( budget>=0)
+        {
+            
+            Console.WriteLine($"Money left: ${budget:F2}");
+        }
+        else
+        {
+            budget = Math.Abs(budget);
+            Console.WriteLine($"Not enough. We need ${budget:F2} more.");
+        }
+    }
+}
