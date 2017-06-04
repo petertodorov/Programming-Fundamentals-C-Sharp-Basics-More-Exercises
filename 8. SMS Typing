@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+public class SMSTyping
+{
+    static void Main()
+    {
+        char[] alphabet = new char[] {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i','j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+        List<char> message = new List<char>();
+        int n = int.Parse(Console.ReadLine());
+        int letterIndex = new int();
+        for (int i = 0; i < n; i++)
+        {
+            string input = Console.ReadLine();
+            int numberOfDigits = input.Length;
+            char firstDigit = input.First();
+            int mainDigit = (int) Char.GetNumericValue(firstDigit);
+            int offset = (mainDigit - 2) * 3;
+            if (mainDigit == 8 || mainDigit == 9)
+            {
+                offset += 1;
+            }
+            if (mainDigit==0)
+            {
+                message.Add(' ');
+                continue;
+            }
+            else
+            {
+                letterIndex = offset + numberOfDigits - 1;
+            }
+            for (int j = 0; j < alphabet.Length; j++)
+            {
+                if (letterIndex == j)
+                {
+                    message.Add( alphabet[j]);
+                    break;
+                }
+            }
+        }
+        Console.WriteLine(String.Join("",message));
+    }
+}
